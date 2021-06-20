@@ -1,16 +1,22 @@
 .uploadfilecontainer {
+  margin: auto;
+  width: 80%
+}
+
+.paste-input {
   background-image: url("../../assets/cloud-2044823_960_720.png");
   background-repeat: no-repeat;
   background-size: 100px;
   background-position: center;
   height: 200px;
-  width: 80%;
+  width: 100%;
   margin: 20px auto;
   border: 2px dashed #1C8ADB;
   border-radius: 10px;
+  color: transparent;
 }
 
-.uploadfilecontainer:hover {
+.paste-input:hover {
   cursor: pointer;
   background-color: #9ecbec !important;
   opacity: 0.8;

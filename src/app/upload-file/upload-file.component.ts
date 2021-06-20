@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component} from '@angular/core'
 
 @Component({
   selector: 'app-upload-file',
@@ -9,13 +9,17 @@ export class UploadFileComponent  {
 
   files: any = [];
 
-  uploadFile(event) {
+  uploadFile(event: any) {
+    if(event.target && event.target.files)
+      event = event.target.files
+
     for (let index = 0; index < event.length; index++) {
-      const element = event[index];
+      const element: File = event[index];
       this.files.push(element.name)
-    }  
+    }
   }
-  deleteAttachment(index) {
+
+  deleteAttachment(index: number) {
     this.files.splice(index, 1)
   }
 }

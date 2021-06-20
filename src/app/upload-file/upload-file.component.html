@@ -1,9 +1,24 @@
-<div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
-  <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+<div class="uploadfilecontainer">
+  <input
+    class="paste-input"
+    #pasteInput
+    (input)="pasteInput.value=''"
+    class="paste-input"
+    type="text"
+    (onFileDropped)="uploadFile($event)"
+    (click)="fileInput.click()"
+    appDragDrop>
+  <input
+    type="file"
+    multiple="multiple"
+    #fileInput
+    (change)="uploadFile($event)"
+    hidden>
 </div>
-  <div  class="files-list" *ngFor="let file of files;let i=index">
-    <p>{{ file }}</p>
-    <button class="delete-file" (click)="deleteAttachment(i)">
-      <img src="../../assets/Recycle_Bin_Full.png">
-    </button>
-  </div>
+
+<div class="files-list" *ngFor="let file of files;let i=index">
+  <p>{{ file }}</p>
+  <button class="delete-file" (click)="deleteAttachment(i)">
+    <img src="../../assets/Recycle_Bin_Full.png">
+  </button>
+</div>
