@@ -35,7 +35,22 @@ export class DragDropDirective {
     if (files.length > 0) {
       this.onFileDropped.emit(files)
     }
-
   }
 
+  //Paste listener
+  @HostListener('paste', ['$event']) public onPaste(evt: any) {
+    this.background = '#f5fcff'
+    this.opacity = '1'
+    const items = (evt.clipboardData || evt.originalEvent.clipboardData).items;
+    const files = []
+    for (const item of items) {
+      if(item.type){
+        const file = item.getAsFile()
+
+        if(file)
+          files.push(file)
+      }
+    }
+    this.onFileDropped.emit(files)
+  }
 }
