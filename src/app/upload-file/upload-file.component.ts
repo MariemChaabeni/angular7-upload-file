@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DragDropDirective } from '../drag-drop.directive';
 
 @Component({
   selector: 'app-upload-file',
+  standalone: true,
+  imports: [CommonModule, DragDropDirective],
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.css']
 })

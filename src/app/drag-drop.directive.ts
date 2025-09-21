@@ -1,7 +1,8 @@
 import { Directive, Output, EventEmitter, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appDragDrop]'
+  selector: '[appDragDrop]',
+  standalone: true
 })
 export class DragDropDirective {
   @Output() onFileDropped = new EventEmitter<FileList>();
@@ -32,7 +33,6 @@ export class DragDropDirective {
     evt.stopPropagation();
     this.background = '#f5fcff';
     this.opacity = '1';
-    
     const files = evt.dataTransfer?.files;
     if (files && files.length > 0) {
       this.onFileDropped.emit(files);
