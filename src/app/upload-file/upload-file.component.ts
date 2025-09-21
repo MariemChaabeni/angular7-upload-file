@@ -1,21 +1,31 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.css']
 })
-export class UploadFileComponent  {
+export class UploadFileComponent {
 
-  files: any = [];
+  files: string[] = [];
 
-  uploadFile(event) {
-    for (let index = 0; index < event.length; index++) {
-      const element = event[index];
-      this.files.push(element.name)
-    }  
+  uploadFile(fileList: FileList): void {
+    if (fileList) {
+      for (let index = 0; index < fileList.length; index++) {
+        const element = fileList[index];
+        this.files.push(element.name);
+      }
+    }
   }
-  deleteAttachment(index) {
-    this.files.splice(index, 1)
+
+  onFileSelected(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files) {
+      this.uploadFile(target.files);
+    }
+  }
+
+  deleteAttachment(index: number): void {
+    this.files.splice(index, 1);
   }
 }
